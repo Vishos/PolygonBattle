@@ -1,0 +1,42 @@
+<p>
+  battle works!
+</p>
+<div *ngIf ="gameOver">
+  <p>The game ended on Round {{round - 1}}</p>
+  <button type="" (click)="setup()">Play Again</button>
+</div>
+
+<div *ngIf="player" id="options">
+ Color: <input type="color" name="userColor" [value]="player.stats.color" #userColor="ngModel" [(ngModel)]="player.stats.color">
+      # of Sides: <select name ="sides" #sides = "ngModel" [(ngModel)] = "player.stats.sides">
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+        <option value="9">Nine</option>
+        <option value="10">Ten</option>
+      </select>
+      Rate of Fire: <select #rateOfFire = "ngModel" [(ngModel)] = "player.stats.rateOfFire" name = "rateOfFire">
+        <option selected value="4000">Really Slow</option>
+        <option value="2000">Slow</option>
+        <option value="1000">Normal</option>
+        <option value="500">Fast</option>
+        <option value="250">Really Fast</option>
+      </select>
+      Speed of Projectile: <select #speedOfProjectile = "ngModel" [(ngModel)] = "player.stats.speedOfProjectile" name = "speedOfProjectile">
+        <option selected value="2.5">Really Slow</option>
+        <option value="5">Slow</option>
+        <option value="10">Normal</option>
+        <option value="20">Fast</option>
+        <option value="40">Really Fast</option>
+      </select>
+      Number of Projectiles: <select #numberOfProjectiles = "ngModel" [(ngModel)] = "player.stats.numberOfProjectiles" name = "numberOfProjectiles">
+        <option *ngFor="let num of player.stats.armed; let idx = index" [value]="idx">{{idx}}</option>
+        
+      </select>
+</div>
+
+
+<canvas id="canvas1" *ngIf ="!gameOver"></canvas>

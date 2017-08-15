@@ -1,0 +1,8 @@
+canvas {
+    width: 100px;
+    height: 100px;
+    border: 5px solid black;
+}
+section{
+    display: inline-block
+}

@@ -1,0 +1,49 @@
+<div id="page" *ngIf="avatar.stats">
+    
+  <p>
+    character works!
+  </p>
+
+  <section>
+    <form #playerForm = "ngForm" (submit)="processForm()">
+      Name: <input #userName="ngModel" [(ngModel)]="avatar.name" type="text" name="userName" value="">
+      <br>
+      Color: <input type="color" name="userColor" [value]="avatar.stats.color" #userColor="ngModel" [(ngModel)]="avatar.stats.color">
+      <br>
+      # of Sides: <select name ="sides" #sides = "ngModel" [(ngModel)] = "avatar.stats.sides">
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+        <option value="9">Nine</option>
+        <option value="10">Ten</option>
+      </select>
+      <br>
+      Rate of Fire: <select #rateOfFire = "ngModel" [(ngModel)] = "avatar.stats.rateOfFire" name = "rateOfFire">
+        <option selected value="4000">Really Slow</option>
+        <option value="2000">Slow</option>
+        <option value="1000">Normal</option>
+        <option value="500">Fast</option>
+        <option value="250">Really Fast</option>
+      </select>
+      <br>
+      Speed of Projectile: <select #speedOfProjectile = "ngModel" [(ngModel)] = "avatar.stats.speedOfProjectile" name = "speedOfProjectile">
+        <option selected value="2.5">Really Slow</option>
+        <option value="5">Slow</option>
+        <option value="10">Normal</option>
+        <option value="20">Fast</option>
+        <option value="40">Really Fast</option>
+      </select>
+      <input type="submit" name="" value="Play!">
+    </form>
+  </section>
+  <section>
+    <canvas id="canvas"></canvas>
+  </section>
+  <br>
+  <h1>Testing grounds...</h1>
+  <p>{{avatar | json}}</p>
+
+</div>
