@@ -23,6 +23,8 @@ export class BattleComponent implements OnInit {
   gameOver;
   canCollide;
   gamePaused;
+  test;
+  highRound;
 
   constructor(private _httpService:HttpService) {
      
@@ -37,6 +39,8 @@ export class BattleComponent implements OnInit {
           armed:[true,true,false, true, true, true, true, true, true, true]
         }
       }
+
+       //Setup the canvas
     this.setup();
   
    }// end constructor
@@ -45,18 +49,11 @@ export class BattleComponent implements OnInit {
   }
 
   setup(){
-    this.gameOver = false;
-    this.obstacles = [];
-    this.round = 1;
-    this.movement = {
-      up: false,
-      down: false,
-      left: false,
-      right: false,
-      shoot: false
-    };
-
-    this.canShoot = true;
+    window.addEventListener('keydown', (e)=> {
+      if(e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+      }
+    });
 
     document.addEventListener('keydown', (event)=> {
         switch (event.keyCode) {
@@ -124,20 +121,17 @@ export class BattleComponent implements OnInit {
         }
       });
 
-    //Setup the canvas
+   
+
+   this.startDrawing();
+
+  } //end setup
+
+  getCanvas(){
     this.canvasInterval = setInterval(()=>{
       this.canvas = document.getElementById("canvas1");
       if(this.canvas){
         this.ctx = this.canvas.getContext('2d');
-        this.canvas2 = document.createElement("canvas");
-        this.canvas2.setAttribute("id", "canvas2");
-        this.canvas2.style.position = "absolute";
-        let rect = this.canvas.getBoundingClientRect();
-        console.log(`rect = ${rect.top}, ${rect.left}`)
-        this.canvas2.style.top = `${rect.top}px`;
-        this.canvas2.style.left = `${rect.left}px`;
-        this.canvas2.style.zIndex = "1";
-        document.body.appendChild(this.canvas2);
         this.canvas2 = document.getElementById("canvas2");
         this.ctx2 = this.canvas2.getContext("2d");
         this.canvas.width = 800;
@@ -147,18 +141,40 @@ export class BattleComponent implements OnInit {
         clearInterval(this.canvasInterval);
       }
     }, 20);
+  }
 
+  startDrawing(){
+    this.getCanvas();
+    clearInterval(this.drawInterval);
+    clearInterval(this.roundInterval);
+    this.gamePaused = false;
+    this.gameOver = false;
+    if(!this.obstacles){
+      this.obstacles = [];
+    }
+    if(!this.round){
+      this.round = 1;
+    }
+    this.movement = {
+      up: false,
+      down: false,
+      left: false,
+      right: false,
+      shoot: false
+    };
+
+    this.canShoot = true;
     this.drawInterval = setInterval(()=>{
       if(this.ctx){
         this.draw();
       }
     }, 15);
-
-  } //end setup
+  }
 
    draw(){
      if(this.gameOver){
        this.endGame();
+       return false;
      }
      this.ctx.clearRect(0, 0, 800, 600);
      this.canShoot += 15;
@@ -437,36 +453,40 @@ export class BattleComponent implements OnInit {
       timeLeft -= 15;
     }, 15);
     setTimeout(()=>{
-      this.ctx2.clearRect(0, 0, 800, 600);
       clearInterval(this.roundInterval);
+      this.ctx2.clearRect(0, 0, 800, 600);
       this.canCollide = true;
     }, 3000);
   }
 
   endGame(){
-    let timeLeft = 2000;
     clearInterval(this.drawInterval);
+    clearInterval(this.roundInterval);
     this.roundInterval = setInterval(()=>{
+      this.ctx2.clearRect(0, 0, 800, 600);
       this.canShoot = 0;
       this.ctx2.font = "30px Comic Sans MS";
       this.ctx2.fillStyle = "blue";
       this.ctx2.textAlign = "center";
       this.ctx2.fillText("Game ended on round" + (this.round - 1), this.canvas.width/2, this.canvas.height/2)
-      timeLeft -= 5;
     }, 15);
     setTimeout(()=>{
+      this.obstacles = [];
+      this.player.stats.Xcenter = 100;
+      this.player.stats.Ycenter = 100;
       clearInterval(this.roundInterval);
       this.ctx2.clearRect(0, 0, 800, 600);
       this.gameOver = true;
+      this.highRound = this.round;
+      this.round = 1;
     }, 2000);
   }
 
   pauseGame(){
     if(this.gamePaused){
       this.gamePaused = false;
-      this.drawInterval = setInterval(()=>{
-        this.draw();
-      }, 15);
+      clearInterval(this.drawInterval);
+      this.startDrawing();
     }
     else{
       clearInterval(this.drawInterval);
@@ -476,5 +496,16 @@ export class BattleComponent implements OnInit {
       this.ctx.textAlign = "center";
       this.ctx.fillText("Game Paused", this.canvas.width/2, this.canvas.height/2)
     }
+  }
+
+  testFunction(){
+    this.gameOver = false;
+    setInterval(()=>{
+      this.ctx.clearRect(0, 0, 800, 600);
+      this.ctx.font = "30px Comic Sans MS";
+      this.ctx.fillStyle = "purple";
+      this.ctx.textAlign = "center";
+      this.ctx.fillText("Game Paused", this.canvas.width/2, this.canvas.height/2)
+    }, 15)
   }
 }

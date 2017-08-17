@@ -1,10 +1,7 @@
 <p>
   battle works!
 </p>
-<div *ngIf ="gameOver">
-  <p>The game ended on Round {{round - 1}}</p>
-  <button type="" (click)="setup()">Play Again</button>
-</div>
+
 
 <div *ngIf="player" id="options">
  Color: <input type="color" name="userColor" [value]="player.stats.color" #userColor="ngModel" [(ngModel)]="player.stats.color">
@@ -38,5 +35,9 @@
       </select>
 </div>
 
-
 <canvas id="canvas1" *ngIf ="!gameOver"></canvas>
+<div *ngIf ="gameOver" id="gameOver">
+  <p>The game ended on Round {{highRound - 1}}</p>
+  <button type="" (click)="startDrawing()">Play Again</button>
+</div>
+<canvas id="canvas2" *ngIf ="!gameOver"></canvas>

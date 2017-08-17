@@ -10,3 +10,14 @@ canvas {
     margin: 0px auto;
     text-align: center;
 }
+#canvas2{
+    z-index: -1;
+    position: relative;
+    top: -610px;
+}
+#gameOver{
+    width:800px;
+    height: 600px;
+    margin: 0px auto;
+    display: block;
+}
