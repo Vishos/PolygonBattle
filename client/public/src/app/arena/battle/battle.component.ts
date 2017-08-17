@@ -36,7 +36,7 @@ export class BattleComponent implements OnInit {
           Xcenter: 100,
           Ycenter: 100,
           size: 20,
-          armed:[true,true,false, true, true, true, true, true, true, true]
+          armed:[true, true, true, true, true, true, true, true, true, true]
         }
       }
 
