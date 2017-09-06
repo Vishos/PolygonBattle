@@ -1,7 +1,5 @@
-<p>
-  battle works!
-</p>
 
+<h1>Polygon Battle</h1>
 
 <div *ngIf="player" id="options">
  Color: <input type="color" name="userColor" [value]="player.stats.color" #userColor="ngModel" [(ngModel)]="player.stats.color">
@@ -28,10 +26,6 @@
         <option value="10">Normal</option>
         <option value="20">Fast</option>
         <option value="40">Really Fast</option>
-      </select>
-      Number of Projectiles: <select #numberOfProjectiles = "ngModel" [(ngModel)] = "player.stats.numberOfProjectiles" name = "numberOfProjectiles">
-        <option *ngFor="let num of player.stats.armed; let idx = index" [value]="idx">{{idx}}</option>
-        
       </select>
 </div>
 
