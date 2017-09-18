@@ -1,14 +1,107 @@
-<div>
-    
-  <h3>Graham Layman</h3>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-  <p>Welcome to my humble portfolio. It is very much a work in progress at this point.</p>
-  <p>Primarily this is currently a place to show off polygon battle.</p>
-  <p>A game built in javascript utilizing the html canvas.</p>
-  <p>I hope you take the time to play with it and enjoy.</p>
+<body >
+  <article>
+    <h1 id="home">Graham Layman</h1>
+
+    <p>Welcome to my humble portfolio. It is very much a work in progress at this point.</p>
+    <p>Primarily this is a platform for me to show off polygon battle.</p>
+    <p>A game built in javascript utilizing the html canvas.</p>
+    <p>I hope you take the time to play with it and enjoy.</p>
+    <p>Thank you!</p>
+
+  </article>
+
   <br>
-  <p>Thank you!</p>
 
-  <button [routerLink]="['/arena','battle']">Play Polygon Battle</button>
+  <article id="projects">
+    <h2>PROJECTS</h2>
+    <h3 id="polygon">Polygon Battle</h3>
+    <button [routerLink]="['/arena','battle']" class="polyButton">Play Polygon Battle</button>
+    <p>I have been working on this html browser game in my free time (who has that?) and I am having an absolute blast with it.</p>
+    <p>Currently I have implemented the following features:</p>
+    <ul>
+      <li>Collision Detection
+        <ul>
+          <li>Player object to walls.</li>
+          <li>Player object to spheres.</li>
+          <li>Spheres to walls.</li>
+          <li>Spheres to spheres.</li>
+          <li>Projectiles to spheres.</li>
+        </ul>
+      </li>
+      <li>Player Movement.</li>
+      <li>Player Shooting.</li>
+      <li>Pause.</li>
+      <li>Levels / Rounds.</li>
+      <li>End game.</li>
+      <li>Replay.</li>
+      <li>Player enhancment:
+        <ul>
+          <li>Change number of sides</li>
+          <li>Change projectile speed</li>
+          <li>Change cooldown of shooting</li>
+        </ul>
+      </li>
+    </ul>
+    <p>I look forward to finding more time to continue tweaking this game as a platform to experminet with canvas and what's possible in browser based games.</p>
+    <p>A few items on my immediate wish list to add as soon as possible.</p>
+    <ul>
+      <li>Add mass to my collision handling for sphere to sphere interaction.</li>
+      <li>Add gravity to the player object so spheres are attracted to it with increasing effect as sphere size decreases.</li>
+      <li>Upon destruction create smaller spheres from large spheres.</li>
+      <li>Option to toggle sandbox mode vs. story mode.
+        <ul>
+          <li>Story Mode begins with triangle only able to shoot from one side.</li>
+          <li>Ability to spend points to updrade number of sides, and number of sides that attack.</li>
+          <li>Spend points / currency to upgrade attack speed and refresh rate.</li>
+        </ul>
+      </li>
+    </ul>
+    <img src="/assets/polygonBattle.png" alt="" width="100%">
+    <button [routerLink]="['/arena','battle']" class="polyButton">Play Polygon Battle</button>
+  </article>
 
-</div>
+  <br>
+
+  <article>
+    <h2 id="contact">CONTACT ME</h2>
+    <p>Graham Layman</p>
+    <p>Phone: 509-389-0576</p>
+    <p>Email: Graham.Layman@Comcast.net</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/graham-layman-b82a8113a/">Graham Layman</a></p>
+    <p>GitHub: <a href="https://github.com/Vishos">Vishos</a></p>
+  </article>
+</body>
+
+<br>
+<br>
+
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMain" aria-controls="navbarTogglerMain" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerMain">
+    <a class="navbar-brand" href="/landing#home">Graham Layman</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/landing#home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/Vishos">Github</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.linkedin.com/in/graham-layman-b82a8113a/">LinkedIn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/landing#projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/landing#contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+

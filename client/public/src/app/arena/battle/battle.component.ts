@@ -46,6 +46,7 @@ export class BattleComponent implements OnInit {
    }// end constructor
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   setup(){
