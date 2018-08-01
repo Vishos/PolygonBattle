@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // $(document).ready(()=>{
+    //   TweenMax.to("#koolaid", 2, {left: 600});
+    // });
+
+  }
 
   ngOnInit() {
   }

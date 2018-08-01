@@ -1,18 +1,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+
 
 <body >
-  <article>
-    <h1 id="home">Graham Layman</h1>
-
-    <p>Welcome to my humble portfolio. It is very much a work in progress at this point.</p>
-    <p>Primarily this is a platform for me to show off polygon battle.</p>
-    <p>A game built in javascript utilizing the html canvas.</p>
-    <p>I hope you take the time to play with it and enjoy.</p>
-    <p>Thank you!</p>
-
-  </article>
-
-  <br>
+  <img id="koolaid" src="/assets/Images/kool1.jpg" alt="">
 
   <article id="projects">
     <h2>PROJECTS</h2>
@@ -45,19 +36,7 @@
       </li>
     </ul>
     <p>I look forward to finding more time to continue tweaking this game as a platform to experminet with canvas and what's possible in browser based games.</p>
-    <p>A few items on my immediate wish list to add as soon as possible.</p>
-    <ul>
-      <li>Add mass to my collision handling for sphere to sphere interaction.</li>
-      <li>Add gravity to the player object so spheres are attracted to it with increasing effect as sphere size decreases.</li>
-      <li>Upon destruction create smaller spheres from large spheres.</li>
-      <li>Option to toggle sandbox mode vs. story mode.
-        <ul>
-          <li>Story Mode begins with triangle only able to shoot from one side.</li>
-          <li>Ability to spend points to updrade number of sides, and number of sides that attack.</li>
-          <li>Spend points / currency to upgrade attack speed and refresh rate.</li>
-        </ul>
-      </li>
-    </ul>
+    
     <img class="projectImg" src="/assets/Images/polygonBattle.png" alt="" width="90%">
     <button [routerLink]="['/arena','battle']" class="polyButton">Play Polygon Battle</button>
   </article>
